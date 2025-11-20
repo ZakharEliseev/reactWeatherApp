@@ -38,7 +38,6 @@ export class App extends Component<AppProps> {
 const mapStateToProps = (state: any) => {
   return {
     cityName: state.cityName,
-    weatherData: state.weatherData,
   };
 };
 
