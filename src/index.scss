@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0;
+  line-height: 0;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+#root {
+  width: 850px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.city {
+  font-size: 24px;
+  padding: 15px 10px 0px 10px;
+  color: #1875f0;
+  text-align: left;
+  align-items: center;
+}
+
+.weatherForm {
+  margin-top: 20px;
+  padding: 0 10px 0 10px;
+  display: flex;
+
+  button {
+    width: 50px;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
+}
+
+.weatherFormInput {
+  border: 1px solid black;
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.calendar {
+  position: relative;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: #f4f4f4;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);
+  }
+
+  &Item {
+    display: flex;
+    height: 60px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1;
+  }
+
+  &Day {
+    padding-right: 15px;
+    color: #1875f0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  &Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40px;
+    justify-content: space-around;
+
+    &Month {
+      font-weight: 600;
+    }
+  }
+}
+
+.activeDate {
+  background: #ffffff;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.08);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.weather {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  &Item {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #e0e0e0;
+      box-shadow: 0 1px 7px rgba(0, 0, 0, 0.4);
+    }
+  }
+  &Temp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    justify-content: space-around;
+    height: 50px;
+
+    &Degree {
+      font-weight: 400;
+    }
+  }
+
+  &Descr {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: flex-start;
+    height: 50px;
+
+    &Icon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &Wind {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+  }
+
+  &Pressure {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+  }
+
+  &Humidity {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+  }
+}
