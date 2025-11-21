@@ -25,7 +25,7 @@ export class Calendar extends Component<CalendarProps, CalendarState> {
   handleSetActiveDay = (e: React.MouseEvent<HTMLLIElement>) => {
     const timeStamp = e.currentTarget.dataset.timestamp;
     if (timeStamp) {
-      this.setState((state) => ({
+      this.setState(() => ({
         activeDay: timeStamp,
       }));
     }

@@ -32,7 +32,7 @@ export class WeatherSearchForm extends Component<WeatherSearchFormProps, Weather
     const { inputValue } = this.state;
 
     return (
-        <form className="weatherForm" onSubmit={(e) => this.handleSubmit(e)}>
+        <form className="weatherForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="searchForm"

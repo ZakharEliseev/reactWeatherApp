@@ -5,17 +5,14 @@ import { WeatherProps } from '@/types/models';
 export class Weather extends Component<WeatherProps> {
   constructor(props: WeatherProps) {
     super(props);
-
   }
-
 
   render() {
     const { weatherData, activeDay } = this.props;
     const currentDay = weatherData[activeDay];
-    console.log(currentDay);
     return (
       <ul className="weather">
-        {currentDay.map((data: any, index: number) => {
+        {currentDay?.map((data: any, index: number) => {
           return (
             <li key={index} className="weatherItem">
               <div className="weatherTemp">
@@ -36,7 +33,7 @@ export class Weather extends Component<WeatherProps> {
               </div>
               <div className="weatherHumidity">
                 <p className="weatherHumidityTitle">Влажность</p>
-                <p className="weatherHumidityMetric">{data.humidity} %</p>
+                <p className="weatherHumidityMetric">{data.humidity}</p>
               </div>
             </li>
           );
@@ -45,28 +42,3 @@ export class Weather extends Component<WeatherProps> {
     );
   }
 }
-
-
-
-// 
-// description
-// : 
-// "пасмурно"
-// humidity
-// : 
-// 80
-// icon
-// : 
-// "04d"
-// pressure
-// : 
-// 768
-// temp
-// : 
-// 1
-// time
-// : 
-// "12:00"
-// wind
-// : 
-// 3

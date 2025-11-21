@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+// eslint-disable-next-line import/order
 import { FETCHING_WEATHER_FULFILLED, FETCH_WEATHER, FETCH_WEATHER_REJECTED, GET_CITY_NAME } from '../../types/constants';
 
+// eslint-disable-next-line no-restricted-imports
 import 'dayjs/locale/ru';
 
+// eslint-disable-next-line import/order
 import {DateTimeService} from '../../services/dateTimeService';
 
 const dateTimeService = new DateTimeService();
@@ -39,6 +42,7 @@ export const actionFetchWeatherApiData = (cityName: string) => (dispatch: any) =
                 pressure: Math.ceil(item.main.pressure / 1.33),
                 humidity: item.main.humidity,
               };
+              // eslint-disable-next-line no-param-reassign
               if (!acc[date]) acc[date] = [];
               acc[date].push(entry);
               return acc;

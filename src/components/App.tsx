@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import { actionFetchWeatherApiData, actionGetCityName } from '@/store/actions/weatherActions';
 
-import {Calendar} from '../components/calendar';
 import { AppProps } from '../types/models';
 
+import {Calendar} from './calendar';
 import { WeatherSearchForm } from './weatherSearchForm';
 
 export class App extends Component<AppProps> {
