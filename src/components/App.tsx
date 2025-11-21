@@ -5,14 +5,9 @@ import { connect } from 'react-redux';
 import { actionFetchWeatherApiData, actionGetCityName } from '@/store/actions/weatherActions';
 
 import {Calendar} from '../components/calendar';
-import { Weather } from '../components/weather';
 import { AppProps } from '../types/models';
 
 import { WeatherSearchForm } from './weatherSearchForm';
-
-
-
-
 
 export class App extends Component<AppProps> {
   handleRenderCityName = (cityName: string) => {
@@ -24,12 +19,15 @@ export class App extends Component<AppProps> {
   }
 
   render() {
+    const { weatherData } = this.props;
     return (
       <>
         <h1 className="city">{this.props.cityName}</h1>
-        <WeatherSearchForm onCitySubmit={this.handleRenderCityName} onFetchData={this.handleFetchWeatherApiData}/>
-        <Calendar />
-        <Weather />
+        <WeatherSearchForm
+          onCitySubmit={this.handleRenderCityName}
+          onFetchData={this.handleFetchWeatherApiData}
+        />
+        <Calendar weatherData={weatherData} />
       </>
     );
   }
@@ -38,6 +36,7 @@ export class App extends Component<AppProps> {
 const mapStateToProps = (state: any) => {
   return {
     cityName: state.cityName,
+    weatherData: state.weatherData,
   };
 };
 

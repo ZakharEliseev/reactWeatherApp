@@ -43,33 +43,10 @@ export const actionFetchWeatherApiData = (cityName: string) => (dispatch: any) =
               acc[date].push(entry);
               return acc;
             }, {})
-      console.log(groupedWeatherData)
-      dispatch({ type: FETCHING_WEATHER_FULFILLED, payload: groupedWeatherData });
+      dispatch({ type: FETCHING_WEATHER_FULFILLED, payload: {groupedWeatherData} });
     })
     .catch((e) => {
-      dispatch({ type: FETCH_WEATHER_REJECTED , payload: e});
+      dispatch({ type: FETCH_WEATHER_REJECTED , payload: {e}});
     });
 };
 
-
-// async processWeatherData(city: string): Promise<void> {
-//     const list = await this.fetchWeatherData(city);
-//     this.groupedForecast = list?.reduce((acc: GroupedForecast, item: any) => {
-//       const date = this.dateTimeService.format(item.dt_txt, 'YYYY-MM-DD')
-//       const time = this.dateTimeService.format(item.dt_txt, 'HH:mm');
-
-//       const entry = {
-//         time,
-//         temp: Math.ceil(item.main.temp),
-//         description: item.weather[0].description,
-//         icon: item.weather[0].icon,
-//         wind: Math.ceil(item.wind.speed),
-//         pressure: Math.ceil(item.main.pressure / 1.33),
-//         humidity: item.main.humidity,
-//       };
-
-//       if (!acc[date]) acc[date] = [];
-//       acc[date].push(entry);
-//       return acc;
-//     }, {});
-//   }

@@ -34,8 +34,8 @@ export const reducer = (state = initialState, action: any) => {
         ...state,
         fetching: false,
         fetched: true,
-        weatherData: [action.payload.data]
-      }
+        weatherData: action.payload.groupedWeatherData,
+      };
     }
     default: {
        return state
