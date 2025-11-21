@@ -6,8 +6,8 @@ import { actionFetchWeatherApiData, actionGetCityName } from '@/store/actions/we
 
 import { AppProps } from '../types/models';
 
-import {Calendar} from './calendar';
-import { WeatherSearchForm } from './weatherSearchForm';
+import {Calendar} from './Calendar';
+import { WeatherSearchForm } from './WeatherSearchForm';
 
 export class App extends Component<AppProps> {
   handleRenderCityName = (cityName: string) => {

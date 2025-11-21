@@ -1,11 +1,14 @@
 import axios from 'axios';
 
 
+// eslint-disable-next-line import/order
 import { FETCHING_WEATHER_FULFILLED, FETCH_WEATHER, FETCH_WEATHER_REJECTED, GET_CITY_NAME } from '../../types/constants';
 
 
+// eslint-disable-next-line no-restricted-imports
 import 'dayjs/locale/ru';
 
+// eslint-disable-next-line import/order
 import {DateTimeService} from '../../services/dateTimeService';
 
 
@@ -29,8 +32,7 @@ export const actionFetchWeatherApiData = (cityName: string) => (dispatch: any) =
       },
     })
     .then((response) => {
-      const weatherData = response.data;
-      const groupedWeatherData = weatherData.list.reduce((acc: any, item: any) => {
+      const groupedWeatherData = response.data.list.reduce((acc: any, item: any) => {
         const date = dateTimeService.format(item.dt_txt, 'YYYY-MM-DD');
         const time = dateTimeService.format(item.dt_txt, 'HH:mm');
         const entry = {
@@ -42,6 +44,7 @@ export const actionFetchWeatherApiData = (cityName: string) => (dispatch: any) =
           pressure: Math.ceil(item.main.pressure / 1.33),
           humidity: item.main.humidity,
         };
+        // eslint-disable-next-line no-param-reassign
         if (!acc[date]) acc[date] = [];
         acc[date].push(entry);
         return acc;

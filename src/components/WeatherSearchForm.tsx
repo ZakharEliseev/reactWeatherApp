@@ -1,5 +1,8 @@
 import { Component } from 'react';
 
+import { connect } from 'react-redux';
+
+import { actionGetCityName } from '@/store/actions/weatherActions';
 import { WeatherSearchFormProps, WeatherSearchFormState } from '@/types/models';
 
 
@@ -45,3 +48,15 @@ export class WeatherSearchForm extends Component<WeatherSearchFormProps, Weather
     );
   }
 }
+
+const mapStateToProps = (state: any) => {
+  return {
+    cityName: state.cityName,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  actionGetCityName: (cityName: string) => dispatch(actionGetCityName(cityName)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherSearchForm);
