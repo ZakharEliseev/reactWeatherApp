@@ -95,6 +95,15 @@ body {
   border-top-right-radius: 6px;
 }
 
+.pureData {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+}
+
 .weather {
   display: flex;
   flex-direction: column;

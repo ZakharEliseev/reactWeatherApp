@@ -19,10 +19,11 @@ export class App extends Component<AppProps> {
   }
 
   render() {
-    const { weatherData } = this.props;
+    const { weatherData, error, cityName } = this.props;
     return (
       <>
-        <h1 className="city">{this.props.cityName}</h1>
+        <h1 className="city">{ error ? error : cityName}</h1>
+
         <WeatherSearchForm
           onCitySubmit={this.handleRenderCityName}
           onFetchData={this.handleFetchWeatherApiData}
@@ -37,6 +38,7 @@ const mapStateToProps = (state: any) => {
   return {
     cityName: state.cityName,
     weatherData: state.weatherData,
+    error: state.fetchingStatus.error,
   };
 };
 

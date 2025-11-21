@@ -21,20 +21,33 @@ export const reducer = (state = initialState, action: any) => {
     case FETCH_WEATHER  : {
       return {
         ...state,
-        fetching: true,
+        fetchingStatus: {
+          fetching: true,
+          fetched: false,
+          error: null,
+        },
       };
     }
     case FETCH_WEATHER_REJECTED: {
       return {
-        ...state, fetching: false, error: action.payload.e
-      }
+        ...initialState,
+        weatherData: [],
+        fetchingStatus: {
+          fetching: false,
+          fetched: false,
+          error: action.payload.e?.message || 'Unknown Error',
+        },
+      };
     }
     case FETCHING_WEATHER_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         weatherData: action.payload.groupedWeatherData,
+        fetchingStatus: {
+          fetching: false,
+          fetched: true,
+          error: null,
+        },
       };
     }
     default: {

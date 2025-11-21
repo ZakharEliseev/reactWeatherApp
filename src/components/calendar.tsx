@@ -9,10 +9,7 @@ import { CalendarProps, CalendarState } from '../types/models';
 
 import { Weather } from './weather';
 
-
-
 const dateTimeService = new DateTimeService();
-
 
 export class Calendar extends Component<CalendarProps, CalendarState> {
   constructor(props: CalendarProps) {
