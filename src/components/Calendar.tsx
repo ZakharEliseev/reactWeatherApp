@@ -1,13 +1,16 @@
 import { Component } from 'react';
 
+import { connect } from 'react-redux';
 
 import { DateTimeService } from '@/services/dateTimeService';
+import { actionFetchWeatherApiData } from '@/store/actions/weatherActions';
 
 import { CalendarProps, CalendarState } from '../types/models';
 
-import { Weather } from './Weather';
+import Weather  from './Weather';
 
-export class Calendar extends Component<CalendarProps, CalendarState> {
+
+class Calendar extends Component<CalendarProps, CalendarState> {
   private dateTimeService = new DateTimeService();
   constructor(props: CalendarProps) {
     super(props);
@@ -42,8 +45,22 @@ export class Calendar extends Component<CalendarProps, CalendarState> {
             );
           })}
         </ul>
-        <Weather weatherData={weatherData} activeDay={this.state.activeDay} />
+        <Weather activeDay={this.state.activeDay} weatherData={{}} />
       </>
     );
   }
 }
+
+
+const mapStateToProps = (state: any) => {
+  return {
+    cityName: state.cityName,
+    weatherData: state.weatherData,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  actionFetchWeatherApiData: (cityName: string) => dispatch(actionFetchWeatherApiData(cityName)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

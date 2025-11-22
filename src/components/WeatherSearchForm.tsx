@@ -2,11 +2,11 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { actionGetCityName } from '@/store/actions/weatherActions';
+import { actionFetchWeatherApiData, actionGetCityName } from '@/store/actions/weatherActions';
 import { WeatherSearchFormProps, WeatherSearchFormState } from '@/types/models';
 
 
-export class WeatherSearchForm extends Component<WeatherSearchFormProps, WeatherSearchFormState> {
+class WeatherSearchForm extends Component<WeatherSearchFormProps, WeatherSearchFormState> {
   constructor(props: WeatherSearchFormProps) {
     super(props);
     this.state = {
@@ -23,40 +23,33 @@ export class WeatherSearchForm extends Component<WeatherSearchFormProps, Weather
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { inputValue } = this.state;
-    const { onFetchData, onCitySubmit } = this.props;
-    onFetchData(inputValue);
-    onCitySubmit(inputValue)
+    this.props.actionGetCityName(inputValue);
+    this.props.actionFetchWeatherApiData(inputValue); 
     this.setState({
-      inputValue: ''
-    })
+      inputValue: '',
+    });
   };
 
   render() {
     const { inputValue } = this.state;
-
     return (
-        <form className="weatherForm" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="searchForm"
-            className="weatherFormInput"
-            value={inputValue}
-            onChange={this.handleValueChange}
-          />
-          <button type="submit">Найти</button>
-        </form>
+      <form className="weatherForm" onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          name="searchForm"
+          className="weatherFormInput"
+          value={inputValue}
+          onChange={this.handleValueChange}
+        />
+        <button type="submit">Найти</button>
+      </form>
     );
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    cityName: state.cityName,
-  };
-};
-
 const mapDispatchToProps = (dispatch: any) => ({
   actionGetCityName: (cityName: string) => dispatch(actionGetCityName(cityName)),
+  actionFetchWeatherApiData: (cityName: string) => dispatch(actionFetchWeatherApiData(cityName)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeatherSearchForm);
+export default connect(null, mapDispatchToProps)(WeatherSearchForm);

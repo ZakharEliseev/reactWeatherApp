@@ -2,33 +2,20 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { actionFetchWeatherApiData, actionGetCityName } from '@/store/actions/weatherActions';
-
 import { AppProps } from '../types/models';
 
-import {Calendar} from './Calendar';
-import { WeatherSearchForm } from './WeatherSearchForm';
+import Calendar from './Calendar';
+import WeatherSearchForm from './WeatherSearchForm';
 
 export class App extends Component<AppProps> {
-  handleRenderCityName = (cityName: string) => {
-    this.props.actionGetCityName(cityName)
-  }
-
-  handleFetchWeatherApiData = (cityName: string) => {
-    this.props.actionFetchWeatherApiData(cityName);
-  }
 
   render() {
-    const { weatherData, error, cityName } = this.props;
+    const { error, cityName } = this.props;
     return (
       <>
         <h1 className="city">{ error ? error : cityName}</h1>
-
-        <WeatherSearchForm
-          onCitySubmit={this.handleRenderCityName}
-          onFetchData={this.handleFetchWeatherApiData}
-        />
-        <Calendar weatherData={weatherData} />
+        <WeatherSearchForm/>
+        <Calendar />
       </>
     );
   }
@@ -42,9 +29,4 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-  actionGetCityName: (cityName: string) => dispatch(actionGetCityName(cityName)),
-  actionFetchWeatherApiData: (cityName: string) => dispatch(actionFetchWeatherApiData(cityName)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
