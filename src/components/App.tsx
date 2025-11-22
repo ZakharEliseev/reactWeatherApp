@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { AppProps } from '../types/models';
+import { AppProps, RootState } from '../types/models';
 
 import Calendar from './Calendar';
 import WeatherSearchForm from './WeatherSearchForm';
@@ -21,7 +21,7 @@ export class App extends Component<AppProps> {
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   return {
     cityName: state.cityName,
     weatherData: state.weatherData,

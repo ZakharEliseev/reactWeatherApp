@@ -173,4 +173,10 @@ export default [
       'no-restricted-syntax': 'off',
     },
   },
+  {
+    files: ['**/services/DateTimeService.ts'],
+    rules: {
+      'no-restricted-imports': 'off',
+    },
+  },
 ];

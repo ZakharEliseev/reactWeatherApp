@@ -1,10 +1,11 @@
 import { Component } from 'react';
 
+import { Dispatch } from 'redux';
+
 import { connect } from 'react-redux';
 
 import { actionFetchWeatherApiData, actionGetCityName } from '@/store/actions/weatherActions';
 import { WeatherSearchFormProps, WeatherSearchFormState } from '@/types/models';
-
 
 class WeatherSearchForm extends Component<WeatherSearchFormProps, WeatherSearchFormState> {
   constructor(props: WeatherSearchFormProps) {
@@ -24,7 +25,7 @@ class WeatherSearchForm extends Component<WeatherSearchFormProps, WeatherSearchF
     e.preventDefault();
     const { inputValue } = this.state;
     this.props.actionGetCityName(inputValue);
-    this.props.actionFetchWeatherApiData(inputValue); 
+    this.props.actionFetchWeatherApiData(inputValue);
     this.setState({
       inputValue: '',
     });
@@ -47,7 +48,7 @@ class WeatherSearchForm extends Component<WeatherSearchFormProps, WeatherSearchF
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actionGetCityName: (cityName: string) => dispatch(actionGetCityName(cityName)),
   actionFetchWeatherApiData: (cityName: string) => dispatch(actionFetchWeatherApiData(cityName)),
 });

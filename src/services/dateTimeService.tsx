@@ -1,7 +1,4 @@
-// eslint-disable-next-line no-restricted-imports
 import dayjs from 'dayjs';
-
-// eslint-disable-next-line no-restricted-imports
 import 'dayjs/locale/ru';
 
 export class DateTimeService {

@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { WeatherProps } from '@/types/models';
+import { RootState, WeatherEntry, WeatherProps } from '@/types/models';
 
 
 export class Weather extends Component<WeatherProps> {
@@ -18,7 +18,7 @@ export class Weather extends Component<WeatherProps> {
         {!currentDay ? (
           <li className="pureData"> Данные не были загружены.</li>
         ) : (
-          currentDay.map((data: any, index: number) => {
+          currentDay.map((data: WeatherEntry, index: number) => {
             return (
               <li key={index} className="weatherItem">
                 <div className="weatherTemp">
@@ -50,7 +50,7 @@ export class Weather extends Component<WeatherProps> {
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   return {
     weatherData: state.weatherData,
   };
